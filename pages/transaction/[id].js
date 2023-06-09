@@ -24,6 +24,7 @@ export default function TransactionDetail() {
                     setTransactionData(response.data.transaction);
                 }
             } catch (error) {
+                console.error("Error at /api/transaction", error);
                 setErrorMessage(
                     error?.response?.data?.message || 'Unable to fetch transaction. Please try again later.'
                 );

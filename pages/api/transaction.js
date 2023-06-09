@@ -5,8 +5,7 @@ const miralandConnection = new miralandWeb3.Connection(DEVNET);
 
 const handler = async (req, res) => {
     const transactionHash = req.body.transactionHash;
-    // if (!transactionHash) { MI, vanilla
-    if (!transactionHash || !/[1-9A-HJ-NP-Za-km-z]{64,88}/.test(transactionHash)) {
+    if (!transactionHash) {
         return res.status(401).json({
             error: 'Invalid transaction hash',
         });

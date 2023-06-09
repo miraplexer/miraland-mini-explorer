@@ -1,6 +1,7 @@
 {
   "name": "miraland-mini-explorer",
   "version": "0.1.0",
+  "description": "Derived/Forked from sa-ma/solana-blockchain-explorer",
   "private": true,
   "scripts": {
     "dev": "next dev",
