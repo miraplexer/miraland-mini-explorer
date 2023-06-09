@@ -16,6 +16,9 @@ export default function TransactionDetail() {
                 setLoading(true);
                 setErrorMessage('');
 
+                if (!router.query?.id) {
+                    return;
+                }
                 const response = await axios.post('/api/transaction', {
                     transactionHash: router.query?.id,
                 });
@@ -24,7 +27,7 @@ export default function TransactionDetail() {
                     setTransactionData(response.data.transaction);
                 }
             } catch (error) {
-                console.error("Error at /api/transaction", error);
+                console.error("Error caught in getTransaction()", error);
                 setErrorMessage(
                     error?.response?.data?.message || 'Unable to fetch transaction. Please try again later.'
                 );

@@ -7,7 +7,7 @@ const handler = async (req, res) => {
     const transactionHash = req.body.transactionHash;
     if (!transactionHash) {
         return res.status(401).json({
-            error: 'Invalid transaction hash',
+            error: 'Invalid transaction hash. Please check transaction hash provided.',
         });
     }
     try {
