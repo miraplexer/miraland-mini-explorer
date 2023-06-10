@@ -1,5 +1,8 @@
 import React from 'react';
 import { fromUnixTime, format } from 'date-fns';
+// import ReactJson from 'react-json-view'
+import loadable from '@loadable/component';
+const ReactJson = loadable(() => import('react-json-view'));
 
 const TransactionListDetail = ({ loading, transactionData }) => {
     return (
@@ -42,8 +45,17 @@ const TransactionListDetail = ({ loading, transactionData }) => {
                                         1_000_000_000}
                                 </td>
                             </tr>
+                            <tr className='border-b'>
+                                <td className='font-medium text-sm p-4'>📎</td>
+                                <td className='p-4'>
+                                    🔦 Transaction Full Details 📑
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+                    <React.Fragment>
+                        <ReactJson collapsed='true' src={transactionData} />
+                    </React.Fragment>
                 </div>
             )}
             {!loading && !transactionData && <p className='text-center'>No transaction to display</p>}
