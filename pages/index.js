@@ -9,6 +9,7 @@ export default function Home() {
     const [transactionList, setTransactionList] = useState([]);
     const [balance, setBalance] = useState(null);
     const [address, setAddress] = useState('');
+    const [cluster, setCluster] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleFormSubmit = async (event) => {
@@ -17,7 +18,7 @@ export default function Home() {
             setLoading(true);
             setErrorMessage('');
 
-            const response = await axios.get(`/api/transactions/?address=${address}`);
+            const response = await axios.get(`/api/transactions/?address=${address}&cluster=${cluster}`);
             if (response.status === 200) {
                 setTransactionList(response.data.transactionList);
                 const accountBalanceText = response.data.accountBalance;
@@ -41,6 +42,8 @@ export default function Home() {
                 <h1 className='text-2xl'>Miraland Mini Explorer</h1>
                 <SearchTransactionForm
                     handleFormSubmit={handleFormSubmit}
+                    cluster={cluster}
+                    setCluster={setCluster}
                     address={address}
                     setAddress={setAddress}
                     loading={loading}

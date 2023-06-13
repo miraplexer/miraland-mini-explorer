@@ -21,6 +21,7 @@ export default function TransactionDetail() {
                 }
                 const response = await axios.post('/api/transaction', {
                     transactionHash: router.query?.id,
+                    cluster: router.query?.cluster ? router.query.cluster : 'mainnet-mln'
                 });
 
                 if (response.status === 200) {
@@ -37,7 +38,7 @@ export default function TransactionDetail() {
         };
 
         getTransaction();
-    }, [router.query?.id]);
+    }, [router.query?.id, router.query?.cluster, router.query?.numTx]);
 
     return (
         <>
